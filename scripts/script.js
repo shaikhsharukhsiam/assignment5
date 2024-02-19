@@ -4,36 +4,27 @@ const nextButton = document.getElementById('btn-next');
 nextButton.setAttribute('disabled', true);
 const seats = document.getElementsByClassName('seat');
 const perSeatPrice = 550;
-// total seat count
 const totalNumberSeat = document.getElementById('available-seat').innerText;
 let availableSeat = parseInt(totalNumberSeat);
-// console.log(availableSeat);
-
 let count = 0;
 let totalPrice = 0;
 let grandTotal = 0;
 for (const seat of seats) {
     seat.addEventListener('click', function (event) {
         count++;
-
         seat.style.backgroundColor = '#1DD100';
         seat.setAttribute('disabled', true);
         availableSeat = availableSeat - 1;
         const seatName = event.target.innerText;
-
-
-        // get coupon
         if (count === 4) {
             couponButton.removeAttribute('disabled');
 
         }
-
         if (count > 0) {
             nextButton.removeAttribute('disabled');
         }
         if (count > 4) {
             seat.style.backgroundColor = '#F7F8F8';
-            // totalPrice = totalPrice - 550;
 
             return alert('You can not buy more than 4 ticket');
         }
@@ -54,9 +45,6 @@ for (const seat of seats) {
             tBody.appendChild(tr);
             tr.classList.add('flex', 'justify-between')
         }
-
-
-
         setValueById('selected-seat', count);
         setValueById('total-price', totalPrice);
         setValueById('grand-total', grandTotal);
